@@ -1,28 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function NewBook(){
+function Greeting(){
+  var username = 'Luis';
   return (
-    <div className="Arnaldo">
-      <div className="title">
-        The Title
-      </div>
-      <div className="author">
-        The Author
-      </div>
-      <ul className="stats">
-        <li className="rating">
-        5 starts
-        </li>
-        <li className="isbn">
-        12-345678-910
-        </li>
-      </ul>
+    <div>
+    <span>{username ? 'Hello ' + username : 'Not logged in'}</span>
+    <br />
+    <Component />
+    <br />
+    <Greeting />
     </div>
+  )
+}
+
+function Component(){
+  return React.createElement(
+    'div',
+    {className:'book'},
+    React.createElement('div', {className:'title'}, 'The Title'),
+    React.createElement('div', {className:'author'}, 'The Author'),
+    React.createElement('ul', {className:'starts'},
+    React.createElement('li',{className:'rating'},'5 starts'),
+    React.createElement('li',{className:'isbn'},'12-345678-910')
+    )
   );
 }
 
+
 ReactDOM.render(
-  <NewBook />,
-  document.querySelector('#root')
+  <Greeting />, document.querySelector('#root')
 );
